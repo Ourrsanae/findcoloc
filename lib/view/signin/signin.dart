@@ -1,13 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:findcoloc/themes/conts.dart';
 import 'package:findcoloc/themes/custom_scoffold.dart';
 import 'package:findcoloc/themes/theme.dart';
 import 'package:findcoloc/view/forget_password/forget_password.dart';
 import 'package:findcoloc/view/home/homePage.dart';
 import 'package:findcoloc/view/signup/signup.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -20,20 +18,14 @@ class _SignInScreenState extends State<SignInScreen> {
   bool rememberPassword = true;
   String? email;
   String? password;
-  final GlobalKey<FormState> _formSignInKey = GlobalKey();
-
+  final GlobalKey<FormState> _formSignInKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return  CustomScaffold(
+    return CustomScaffold(
       child: Column(
         children: [
-          const Expanded(
-            flex: 0,
-            child: SizedBox(
-              height: 10,
-            ),
-          ),
+          const SizedBox(height: 10),
           Expanded(
             flex: 7,
             child: Container(
@@ -59,9 +51,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           color: lightColorScheme.secondary,
                         ),
                       ),
-                      const SizedBox(
-                        height: 40.0,
-                      ),
+                      const SizedBox(height: 40.0),
                       TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -71,11 +61,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           }
                           return null;
                         },
-                        onSaved: (value) {
-                          setState(() {
-                            email = value;
-                          });
-                        },
+                        onSaved: (value) => email = value,
                         decoration: InputDecoration(
                           label: const Text('Email'),
                           hintText: 'Enter Email',
@@ -90,9 +76,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 25.0,
-                      ),
+                      const SizedBox(height: 25.0),
                       TextFormField(
                         obscureText: true,
                         obscuringCharacter: '*',
@@ -104,11 +88,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           }
                           return null;
                         },
-                        onSaved: (value) {
-                          setState(() {
-                            password = value;
-                          });
-                        },
+                        onSaved: (value) => password = value,
                         decoration: InputDecoration(
                           label: const Text('Password'),
                           hintText: 'Enter Password',
@@ -152,16 +132,12 @@ class _SignInScreenState extends State<SignInScreen> {
                             },
                             child: const Text(
                               'Forget Password?',
-                              style: TextStyle(
-                                color: Colors.black45,
-                              ),
+                              style: TextStyle(color: Colors.black45),
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
+                      const SizedBox(height: 10.0),
                       SizedBox(
                         width: double.infinity,
                         height: 60.0,
@@ -173,19 +149,16 @@ class _SignInScreenState extends State<SignInScreen> {
                             backgroundColor: lightColorScheme.primary,
                           ),
                           onPressed: () async {
-
-
                             if (_formSignInKey.currentState?.validate() ?? false) {
                               _formSignInKey.currentState?.save();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const homePage(),
+                                  builder: (context) => homePage(),
                                 ),
                               );
                             }
                           },
-
                           child: const Text(
                             'Sign in',
                             style: TextStyle(
@@ -195,35 +168,25 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       const Row(
                         children: [
                           Expanded(
-                            child: Divider(
-                              color: Colors.black12,
-                            ),
+                            child: Divider(color: Colors.black12),
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text(
                               'Or Continue with',
-                              style: TextStyle(
-                                color: Colors.black26,
-                              ),
+                              style: TextStyle(color: Colors.black26),
                             ),
                           ),
                           Expanded(
-                            child: Divider(
-                              color: Colors.black12,
-                            ),
+                            child: Divider(color: Colors.black12),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
+                      const SizedBox(height: 20.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -240,14 +203,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             child: Row(
                               children: [
                                 Icon(Bootstrap.google),
-                                const SizedBox(
-                                  width: 10.0,
-                                ),
+                                const SizedBox(width: 10.0),
                                 const Text(
                                   'Google',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -265,54 +224,44 @@ class _SignInScreenState extends State<SignInScreen> {
                             child: Row(
                               children: [
                                 Icon(Bootstrap.facebook),
-                                const SizedBox(
-                                  width: 10.0,
-                                ),
+                                const SizedBox(width: 10.0),
                                 const Text(
                                   'Facebook',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  style: TextStyle(fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 30.0,
-                      ),
+                      const SizedBox(height: 30.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
                             'Don\'t have an account?',
-                            style: TextStyle(
-                              color: Colors.black45,
-                            ),
+                            style: TextStyle(color: Colors.black45),
                           ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (e) => const SignUpScreen(),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignUpScreen(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'Sign up',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: lightColorScheme.secondary,
                               ),
-                            );
-                          },
-                          child: Text(
-                            'Sign up',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: lightColorScheme.secondary,
                             ),
                           ),
-                        ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
+                      const SizedBox(height: 10.0),
                     ],
                   ),
                 ),
@@ -324,4 +273,3 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 }
-

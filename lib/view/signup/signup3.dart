@@ -17,7 +17,7 @@ class SignUp3 extends StatefulWidget {
 }
 
 class _SignUp3State extends State<SignUp3> {
-  List? _myLanguages, _myLifeStyle, _myPersonality, _myHobbis;
+  List? _myLanguages, _myLifeStyle, _myPersonality, _myHobbies;
   Color selectedColor = lightColorScheme.shadow,
       selectedColor2 = lightColorScheme.shadow,
       selectedColor3 = lightColorScheme.shadow;
@@ -27,109 +27,104 @@ class _SignUp3State extends State<SignUp3> {
 
   @override
   void initState() {
-    dateinput.text = ""; //set the initial value of text field
+    dateinput.text = ""; // Set the initial value of text field
     super.initState();
     _myLanguages = [];
     _myLifeStyle = [];
     _myPersonality = [];
-    _myHobbis = [];
+    _myHobbies = [];
   }
 
   @override
   Widget build(BuildContext context) {
     GlobalKey<FormState> formState = GlobalKey<FormState>();
 
-
-
     return SafeArea(
       child: CustomScaffold(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
+            Padding(
               padding: EdgeInsets.symmetric(vertical: 11, horizontal: 30),
               child: Row(
                 children: [
-                  Icon(
-                    Icons.arrow_back_ios,
-                    size: 20,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
+                  SizedBox(width: 5),
                   Text(
                     "Fill Profile",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 28),
-                  )
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 28,
+                    ),
+                  ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 24,
-            ),
+            SizedBox(height: 24),
             Expanded(
               child: Container(
                 padding: EdgeInsets.all(30),
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(30),
-                        topLeft: Radius.circular(30))),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(30),
+                  ),
+                ),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: 40,
-                      ),
+                      SizedBox(height: 40),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          buildStatusColumn("Student", Icons.school, selectedColor, () {
-                            setState(() {
-                              if (selectedColor == lightColorScheme.shadow) {
-                                selectedColor = lightColorScheme.primary;
-                              } else {
-                                selectedColor = lightColorScheme.shadow;
-                              }
-                              status = "Student";
-                            });
-                          }),
-                          buildStatusColumn("Professional", Icons.card_travel, selectedColor2, () {
-                            setState(() {
-                              if (selectedColor2 == lightColorScheme.shadow) {
-                                selectedColor2 = lightColorScheme.primary;
-                              } else {
-                                selectedColor2 = lightColorScheme.shadow;
-                              }
-                              status = "Professional";
-                            });
-                          }),
-                          buildStatusColumn("FreeLancer", Icons.computer, selectedColor3, () {
-                            setState(() {
-                              if (selectedColor3 == lightColorScheme.shadow) {
-                                selectedColor3 = lightColorScheme.primary;
-                              } else {
-                                selectedColor3 = lightColorScheme.shadow;
-                              }
-                              status = "FreeLancer";
-                            });
-                          }),
+                          buildStatusColumn(
+                            "Student",
+                            Icons.school,
+                            selectedColor,
+                                () {
+                              setState(() {
+                                selectedColor = (selectedColor == lightColorScheme.shadow)
+                                    ? lightColorScheme.primary
+                                    : lightColorScheme.shadow;
+                                status = "Student";
+                              });
+                            },
+                          ),
+                          buildStatusColumn(
+                            "Professional",
+                            Icons.card_travel,
+                            selectedColor2,
+                                () {
+                              setState(() {
+                                selectedColor2 = (selectedColor2 == lightColorScheme.shadow)
+                                    ? lightColorScheme.primary
+                                    : lightColorScheme.shadow;
+                                status = "Professional";
+                              });
+                            },
+                          ),
+                          buildStatusColumn(
+                            "Freelancer",
+                            Icons.computer,
+                            selectedColor3,
+                                () {
+                              setState(() {
+                                selectedColor3 = (selectedColor3 == lightColorScheme.shadow)
+                                    ? lightColorScheme.primary
+                                    : lightColorScheme.shadow;
+                                status = "Freelancer";
+                              });
+                            },
+                          ),
                         ],
                       ),
                       Form(
                         key: formState,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.max,
                           children: [
-                            SizedBox(
-                              height: 40,
-                            ),
+                            SizedBox(height: 40),
                             buildMultiSelectFormField(
                               "Languages",
                               "Please choose one or more",
@@ -147,9 +142,7 @@ class _SignUp3State extends State<SignUp3> {
                                 });
                               },
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
+                            SizedBox(height: 20),
                             buildMultiSelectFormField(
                               "Personality",
                               "Please choose one or more",
@@ -167,9 +160,7 @@ class _SignUp3State extends State<SignUp3> {
                                 });
                               },
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
+                            SizedBox(height: 20),
                             buildMultiSelectFormField(
                               "Lifestyle",
                               "Please choose one or more",
@@ -187,14 +178,12 @@ class _SignUp3State extends State<SignUp3> {
                                 });
                               },
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
+                            SizedBox(height: 20),
                             buildMultiSelectFormField(
                               "Hobbies",
                               "Please choose one or more",
                               listHobbis,
-                              _myHobbis,
+                              _myHobbies,
                                   (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Please select one or more options';
@@ -203,50 +192,53 @@ class _SignUp3State extends State<SignUp3> {
                               },
                                   (value) {
                                 setState(() {
-                                  _myHobbis = value;
+                                  _myHobbies = value;
                                 });
                               },
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
+                            SizedBox(height: 20),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0)),
+                                  borderRadius: BorderRadius.circular(30.0),
+                                ),
                                 backgroundColor: lightColorScheme.primary,
                                 padding: const EdgeInsets.all(15),
                               ),
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const homePage(),
-                                  ),
-                                );
+                                if (formState.currentState?.validate() ?? false) {
+                                  formState.currentState?.save();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => homePage(),
+                                    ),
+                                  );
+                                } else {
+                                  // Show an error message or handle the invalid form state
+                                }
                               },
                               child: const Text(
                                 'Continue',
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600),
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
-                            const SizedBox(
-                              height: 25.0,
-                            ),
-                            // already have an account
+                            const SizedBox(height: 25.0),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
+                                    Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (e) => const homePage(),
+                                        builder: (context) => homePage(),
                                       ),
+                                          (route) => false, // Remove all routes on the stack
                                     );
                                   },
                                   child: Text(
@@ -291,16 +283,15 @@ class _SignUp3State extends State<SignUp3> {
             ),
           ),
         ),
-        SizedBox(
-          height: 8,
-        ),
+        SizedBox(height: 8),
         Text(
           title,
           style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontWeight: FontWeight.w400),
-        )
+            color: Colors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
       ],
     );
   }
@@ -316,25 +307,32 @@ class _SignUp3State extends State<SignUp3> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-          border: Border.all(color: lightColorScheme.primary),
-          borderRadius: BorderRadius.circular(20)),
+        border: Border.all(color: lightColorScheme.primary),
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: MultiSelectFormField(
         autovalidate: AutovalidateMode.disabled,
         chipBackGroundColor: lightColorScheme.primary,
         chipLabelStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            fontSize: 14),
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+          fontSize: 14,
+        ),
         dialogTextStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18),
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+        ),
         checkBoxActiveColor: lightColorScheme.primary,
         checkBoxCheckColor: Colors.white,
         dialogShapeBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+        ),
         title: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+          child: Text(
+            title,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+          ),
         ),
         validator: validator,
         dataSource: dataSource,
@@ -351,5 +349,4 @@ class _SignUp3State extends State<SignUp3> {
       ),
     );
   }
-
 }
